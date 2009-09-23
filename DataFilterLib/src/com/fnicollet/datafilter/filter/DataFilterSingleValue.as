@@ -63,10 +63,11 @@ package com.fnicollet.datafilter.filter {
     }
 
     override public function apply(item:Object):Boolean {
-      if (!_values) {
+      if (!_values || filterKeys == null) {
         return true;
       }
       var valueToFilter:String = String(item[filterKeys[0]]);
+
       var result:Boolean = filterMultipleValues(valueToFilter);
       return applyConstraints(result);
     }

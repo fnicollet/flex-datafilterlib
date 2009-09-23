@@ -7,6 +7,7 @@ package com.fnicollet.datafilter.filter {
    */
   public interface IDataFilter extends IEventDispatcher {
     function apply(item:Object):Boolean;
+    function get isActive():Boolean;
     function refreshDataProvider(event:Event = null):void;
   }
 }

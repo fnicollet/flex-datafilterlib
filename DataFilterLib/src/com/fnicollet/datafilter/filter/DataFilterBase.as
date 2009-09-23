@@ -35,6 +35,18 @@ package com.fnicollet.datafilter.filter {
     }
 
     /**
+     *
+     * @return Boolean indicating if the filter is active
+     */
+    public function get isActive():Boolean {
+      var active:Boolean = false;
+      if (!_parameters) {
+        return false;
+      }
+      return _parameters.active;
+    }
+
+    /**
      * Shortcut to get the filter operator from the parameters
      * @return the filter operator defined in the DataFilterParameters
      */
@@ -110,9 +122,6 @@ package com.fnicollet.datafilter.filter {
      * @return Boolean indicating if the value will be filtered or not (final)
      */
     protected function applyConstraints(value:Boolean):Boolean {
-      if (!_parameters.active) {
-        return true;
-      }
       var finalValue:Boolean = value;
       if (_parameters.invert) {
         finalValue = !finalValue;
