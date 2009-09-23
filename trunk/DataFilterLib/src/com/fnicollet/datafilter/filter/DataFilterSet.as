@@ -47,6 +47,10 @@ package com.fnicollet.datafilter.filter {
       _data.filterFunction = apply;
     }
 
+    private function assignFilterFunction():void {
+
+    }
+
     /**
      *
      * @param value Array of DataFilterParameters
@@ -56,6 +60,7 @@ package com.fnicollet.datafilter.filter {
       for each (var dataFilterParameters:DataFilterParameters in value) {
         addDataFilter(dataFilterParameters);
       }
+      assignFilterFunction();
     }
 
     /**
@@ -90,9 +95,14 @@ package com.fnicollet.datafilter.filter {
      * @return false if the data must be filtered by any of the DataFilter in the set
      */
     public function apply(item:Object):Boolean {
-      for each (var dataFilter:IDataFilter in getDataFilters()) {
-        if (!dataFilter.apply(item)) {
-          return false;
+      if (_data) {
+        for each (var dataFilter:IDataFilter in getDataFilters()) {
+          if (dataFilter.isActive) {
+            if (!dataFilter.apply(item)) {
+              return false;
+            }
+
+          }
         }
       }
       return true;
