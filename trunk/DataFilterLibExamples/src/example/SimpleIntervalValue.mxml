@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:filter="com.fnicollet.datafilter.filter.*">
+  <mx:Script source="../data/ProductData.as"/>
+  <mx:Script>
+    <![CDATA[
+      import com.fnicollet.datafilter.filter.DataFilterType;
+    ]]>
+  </mx:Script>
+  <filter:DataFilterSet id="filterSet" data="{productData}">
+    <filter:dataFilterParameters>
+      <filter:DataFilterParameters id="intervalParam" filterType="{DataFilterType.INTERVAL}" filterKeys="productPrice" filterOperator="{intervalOperatorCB.selectedItem}"
+                                   filterValues="{hsProductPrice.values}" active="{activeIntervalCB.selected}" invert="{invertIntervalCB.selected}"/>
+    </filter:dataFilterParameters>
+  </filter:DataFilterSet>
+
+  <mx:HBox>
+    <mx:Label text="Price Range" fontWeight="bold" fontSize="14"/>
+    <mx:CheckBox id="activeIntervalCB" label="Activer" selected="true"/>
+    <mx:CheckBox id="invertIntervalCB" label="Inverser"/>
+  </mx:HBox>
+
+
+  <mx:HSlider id="hsProductPrice" allowTrackClick="true" minimum="0" maximum="2600" snapInterval="10" liveDragging="true" thumbCount="2" toolTip="Price" width="220" values="[800,2600]"
+              labels="[0, 2600]"/>
+  <mx:HBox>
+    <mx:Label text="Range Type "/>
+    <mx:ComboBox id="intervalOperatorCB">
+      <mx:dataProvider>
+        <mx:Array>
+          <mx:String>IntervalClosed</mx:String>
+          <mx:String>IntervalOpen</mx:String>
+          <mx:String>IntervalOpenLeft</mx:String>
+          <mx:String>IntervalOpenRight</mx:String>
+        </mx:Array>
+      </mx:dataProvider>
+    </mx:ComboBox>
+  </mx:HBox>
+
+
+  <mx:Label text="Filtered Data" fontSize="14" fontWeight="bold"/>
+  <mx:DataGrid rowCount="8" dataProvider="{productData}" width="100%">
+    <mx:columns>
+      <mx:DataGridColumn dataField="productName" headerText="Name"/>
+      <mx:DataGridColumn dataField="productPrice" headerText="Price"/>
+      <mx:DataGridColumn dataField="productType" headerText="Type"/>
+      <mx:DataGridColumn dataField="productCondition" headerText="Condition"/>
+      <mx:DataGridColumn dataField="productVendor" headerText="Vendor"/>
+    </mx:columns>
+  </mx:DataGrid>
+
+  <mx:Label text="Unfiltered Data" fontSize="14" fontWeight="bold"/>
+  <mx:DataGrid rowCount="5" dataProvider="{productData.source}" width="100%">
+    <mx:columns>
+      <mx:DataGridColumn dataField="productName" headerText="Name"/>
+      <mx:DataGridColumn dataField="productPrice" headerText="Price"/>
+      <mx:DataGridColumn dataField="productType" headerText="Type"/>
+      <mx:DataGridColumn dataField="productCondition" headerText="Condition"/>
+      <mx:DataGridColumn dataField="productVendor" headerText="Vendor"/>
+    </mx:columns>
+  </mx:DataGrid>
+</mx:VBox>
