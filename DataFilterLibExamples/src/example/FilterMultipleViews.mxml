@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+         width="100%"
+         height="100%"
+         xmlns:filter="com.fnicollet.datafilter.filter.*">
+  <mx:Script>
+    <![CDATA[
+      import com.fnicollet.datafilter.filter.DataFilterIntervalOperator;
+      import com.fnicollet.datafilter.filter.DataFilterType;
+    ]]>
+  </mx:Script>
+  <mx:Script source="../data/CameraData.as"/>
+  <filter:DataFilterSet id="filterSet"
+                        data="{cameraData}">
+    <filter:dataFilterParameters>
+      <filter:DataFilterParameters id="intervalParam"
+                                   filterType="{DataFilterType.INTERVAL}"
+                                   filterKeys="price"
+                                   filterOperator="{DataFilterIntervalOperator.INTERVAL_CLOSED}"
+                                   filterValues="{hsProductPrice.values}"
+                                   active="{activeIntervalCB.selected}"
+                                   invert="{invertIntervalCB.selected}"/>
+    </filter:dataFilterParameters>
+  </filter:DataFilterSet>
+  <mx:HBox>
+    <mx:Label text="Price Range"
+              fontWeight="bold"
+              fontSize="14"/>
+    <mx:CheckBox id="activeIntervalCB"
+                 label="Activer"
+                 selected="true"/>
+    <mx:CheckBox id="invertIntervalCB"
+                 label="Inverser"/>
+  </mx:HBox>
+
+
+  <mx:HSlider id="hsProductPrice"
+              allowTrackClick="true"
+              minimum="100"
+              maximum="1500"
+              snapInterval="20"
+              liveDragging="true"
+              thumbCount="2"
+              toolTip="Price"
+              width="220"
+              values="[100,1500]"
+              labels="[100,1500]"/>
+  <mx:HDividedBox width="100%"
+                  height="100%">
+
+    <mx:VBox width="100%"
+             height="100%">
+
+
+      <mx:DataGrid dataProvider="{cameraData}"
+                   rowCount="6"
+                   width="100%">
+        <mx:columns>
+          <mx:DataGridColumn dataField="name"/>
+          <mx:DataGridColumn dataField="megapixels"/>
+          <mx:DataGridColumn dataField="type"/>
+          <mx:DataGridColumn dataField="price"/>
+        </mx:columns>
+      </mx:DataGrid>
+
+
+      <mx:TileList dataProvider="{cameraData}"
+                   width="100%"
+                   height="50%">
+        <mx:itemRenderer>
+          <mx:Component>
+            <mx:VBox verticalAlign="middle"
+                     horizontalAlign="center"
+                     width="80"
+                     height="100"
+                     horizontalScrollPolicy="off"
+                     verticalScrollPolicy="off">
+              <mx:Image source="images/{data.name}.png"
+                        width="50"
+                        height="40">
+                <mx:filters>
+                  <mx:DropShadowFilter alpha="0.7"
+                                       distance="10"/>
+                </mx:filters>
+              </mx:Image>
+              <mx:Label text="{data.name}"
+                        fontSize="21"
+                        fontWeight="bold"/>
+              <mx:Label text="${data.price}"/>
+            </mx:VBox>
+          </mx:Component>
+        </mx:itemRenderer>
+      </mx:TileList>
+    </mx:VBox>
+    <mx:VBox width="100%"
+             height="100%">
+
+
+      <mx:ColumnChart dataProvider="{cameraData}"
+                      width="100%"
+                      height="300"
+                      showDataTips="true">
+        <mx:horizontalAxis>
+          <mx:CategoryAxis categoryField="name"/>
+        </mx:horizontalAxis>
+        <mx:series>
+          <mx:ColumnSeries yField="price"
+                           xField="name"/>
+        </mx:series>
+      </mx:ColumnChart>
+
+      <mx:List dataProvider="{cameraData}"
+               labelField="name"
+               rowCount="5"
+               width="100%"/>
+
+    </mx:VBox>
+  </mx:HDividedBox>
+</mx:VBox>
