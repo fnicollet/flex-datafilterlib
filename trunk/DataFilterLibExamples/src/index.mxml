@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" xmlns:example="example.*" xmlns:filter="com.fnicollet.datafilter.filter.*" viewSourceURL="srcview/index.html"
-                creationComplete="onCComplete(event)" paddingTop="0"
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml"
+                xmlns:example="example.*"
+                xmlns:filter="com.fnicollet.datafilter.filter.*"
+                viewSourceURL="srcview/index.html"
+                creationComplete="onCComplete(event)"
+                paddingTop="0"
                 pageTitle="DataFilterLib, a simple and customizable way to filter an ArrayCollection in MXML (or AS3). Right Click to view sources.">
   <mx:Script>
     <![CDATA[
@@ -13,14 +17,21 @@
       }
     ]]>
   </mx:Script>
-  <mx:HBox width="100%" horizontalAlign="center" backgroundColor="white" backgroundAlpha=".2">
-    <mx:LinkButton label="Project HomePage" click="navigateToURL(new URLRequest(PROJECT_HOME_URL))"/>
-    <mx:LinkButton label="View Example Sources" click="navigateToURL(new URLRequest(VIEW_SOURCE_URL))"/>
+  <mx:HBox width="100%"
+           horizontalAlign="center"
+           backgroundColor="white"
+           backgroundAlpha=".2">
+    <mx:LinkButton label="Project HomePage"
+                   click="navigateToURL(new URLRequest(PROJECT_HOME_URL))"/>
+    <mx:LinkButton label="View Example Sources"
+                   click="navigateToURL(new URLRequest(VIEW_SOURCE_URL))"/>
   </mx:HBox>
-  <mx:TabNavigator width="100%" height="100%">
+  <mx:TabNavigator width="100%"
+                   height="100%">
     <example:VerySimpleExample label="Very Simple Example"/>
     <example:SimpleSingleValue label="On a Simple Value"/>
     <example:SimpleIntervalValue label="Over a Range"/>
+    <example:FilterMultipleViews label="Filter Multiple Views"/>
   </mx:TabNavigator>
 
 
