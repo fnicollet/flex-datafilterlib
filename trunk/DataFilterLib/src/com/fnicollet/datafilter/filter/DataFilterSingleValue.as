@@ -47,6 +47,10 @@ package com.fnicollet.datafilter.filter {
       var result:Boolean = false;
       var intervalOperator:String = filterOperator ? filterOperator : DataFilterSingleValueOperator.EQUALS_TO;
       var pattern:RegExp = null;
+      if (_parameters.ignoreCase) {
+        valueToFilter = valueToFilter.toLowerCase();
+        value = value.toLowerCase();
+      }
       switch (intervalOperator) {
         case DataFilterSingleValueOperator.EQUALS_TO:
           result = (valueToFilter == value);
@@ -55,7 +59,7 @@ package com.fnicollet.datafilter.filter {
           result = (valueToFilter.indexOf(value) != -1);
           break;
         case DataFilterSingleValueOperator.STARTS_WITH:
-          pattern = new RegExp("^" + value, "gi");
+          pattern = new RegExp("^" + value, "g");
           result = (valueToFilter.search(pattern) != -1);
           break;
       }

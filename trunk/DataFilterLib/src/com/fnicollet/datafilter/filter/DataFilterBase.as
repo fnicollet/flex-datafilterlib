@@ -30,6 +30,7 @@ package com.fnicollet.datafilter.filter {
       _parameters.addEventListener(DataFilterParameters.FILTER_VALUES_CHANGED, onFilterValuesChanged);
       _parameters.addEventListener(DataFilterParameters.FILTER_KEYS_CHANGED, onFilterKeysChanged);
       _parameters.addEventListener(DataFilterParameters.FILTER_OPERATOR_CHANGED, onFilterOperatorChanged);
+      _parameters.addEventListener(DataFilterParameters.FILTER_IGNORECASE_CHANGED, onFilterIgnoreCaseChanged);
       _parameters.addEventListener(DataFilterParameters.FILTER_INVERT_CHANGED, onFilterInvertChanged);
       _parameters.addEventListener(DataFilterParameters.FILTER_ACTIVE_CHANGED, onFilterActiveChanged);
     }
@@ -75,6 +76,14 @@ package com.fnicollet.datafilter.filter {
      * @param event
      */
     protected function onFilterKeysChanged(event:Event = null):void {
+      refreshDataProvider();
+    }
+
+    /**
+     * Event dispatched when the ignorecase property change
+     * @param event
+     */
+    protected function onFilterIgnoreCaseChanged(event:Event = null):void {
       refreshDataProvider();
     }
 
