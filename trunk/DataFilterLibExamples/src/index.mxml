@@ -32,6 +32,7 @@
     <example:SimpleSingleValue label="On a Simple Value"/>
     <example:SimpleIntervalValue label="Over a Range"/>
     <example:FilterMultipleViews label="Filter Multiple Views"/>
+    <example:MultipleFilters label="Multiple Filters"/>
   </mx:TabNavigator>
 
 
