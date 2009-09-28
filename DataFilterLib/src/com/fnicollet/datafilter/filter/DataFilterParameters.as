@@ -7,6 +7,7 @@ package com.fnicollet.datafilter.filter {
   [Event(name="filterValuesChanged",type="flash.events.Event")]
   [Event(name="filterKeysChanged",type="flash.events.Event")]
   [Event(name="filterOperatorChanged",type="flash.events.Event")]
+  [Event(name="filterIgnoreCase",type="flash.events.Event")]
   [Event(name="filterInvertChanged",type="flash.events.Event")]
   [Event(name="filterActiveChanged",type="flash.events.Event")]
   /**
@@ -35,6 +36,12 @@ package com.fnicollet.datafilter.filter {
     public static const FILTER_OPERATOR_CHANGED:String = "filterOperatorChanged";
 
     /**
+     * Event dispatched when the ignorecase proprerty changed
+     * @default
+     */
+    public static const FILTER_IGNORECASE_CHANGED:String = "filterIgnoreCase";
+
+    /**
      * Event dispatched when the invert proprerty changed
      * @default
      */
@@ -55,6 +62,8 @@ package com.fnicollet.datafilter.filter {
     private var _filterKeys:Array /* of String */ = null;
 
     private var _filterValues:Array /* of Object */ = null;
+
+    private var _ignoreCase:Boolean = true;
 
     private var _invert:Boolean = false;
 
@@ -141,6 +150,14 @@ package com.fnicollet.datafilter.filter {
 
     /**
      *
+     * @return true if the filter is case unsensitive
+     */
+    public function get ignoreCase():Boolean {
+      return _ignoreCase;
+    }
+
+    /**
+     *
      * @return true if the filter is inverted
      */
     public function get invert():Boolean {
@@ -220,6 +237,13 @@ package com.fnicollet.datafilter.filter {
       if (_invert != value) {
         _invert = value;
         dispatchEvent(new Event(FILTER_INVERT_CHANGED));
+      }
+    }
+
+    public function set ignoreCase(value:Boolean):void {
+      if (_ignoreCase != value) {
+        _ignoreCase = value;
+        dispatchEvent(new Event(FILTER_IGNORECASE_CHANGED));
       }
     }
 
