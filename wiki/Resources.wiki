@@ -10,6 +10,7 @@ Tutoriaux (Français):
     * [http://www.flex-tutorial.fr/2009/09/25/datafilterlib-filtres-de-type-datafilterinterval-operateurs-et-sliders/ DataFilterLib - Filtres de type DataFilterInterval, opérateurs et sliders]
     * [http://www.flex-tutorial.fr/2009/09/27/datafilterlib-filtrer-plusieurs-vues-en-utilisant-le-databinding/ DataFilterLib - Filtrer plusieurs vues en utilisant le DataBinding]
     * [http://www.flex-tutorial.fr/2009/09/28/datafilterlib-utilisation-de-multiple-filtres-sur-une-meme-collection/ DataFilterLib - Utilisation de multiple filtres sur une même collection]
+    * [http://www.flex-tutorial.fr/2009/09/29/datafilterlib-utilisation-de-filtres-personnalises/ DataFilterLib – Utilisation de filtres personnalisés]
 
 English Tutorials:
 Coming soon...
