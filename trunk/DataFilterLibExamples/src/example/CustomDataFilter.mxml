@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml"
+         width="100%"
+         height="100%"
+         xmlns:filter="com.fnicollet.datafilter.filter.*"
+         creationComplete="onCComplete();"
+         paddingLeft="20"
+         paddingTop="20">
+  <mx:Script>
+    <![CDATA[
+      import custom.CustomSimpleFilter;
+      import model.CustomSimpleObject;
+      import mx.collections.ArrayCollection;
+
+      [Bindable]
+      private var _dataCollection:ArrayCollection = null;
+
+      private function onCComplete():void {
+        // creation of an ArrayCollection with custom models
+        _dataCollection = new ArrayCollection;
+        _dataCollection.addItem(new CustomSimpleObject(new Date("04/28/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("04/30/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/02/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/03/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/04/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/06/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/08/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/10/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/16/2009")));
+        _dataCollection.addItem(new CustomSimpleObject(new Date("05/25/2009")));
+      }
+
+      // label function for the list
+      private function customLabelFunction(item:CustomSimpleObject):String {
+        if (item.startDate == null) {
+          return "";
+        }
+        return item.startDate.toDateString();
+
+      }
+    ]]>
+  </mx:Script>
+  <filter:DataFilterSet id="filterSet"
+                        data="{_dataCollection}">
+    <filter:dataFilterParameters>
+      <filter:DataFilterParameters filterClass="{CustomSimpleFilter}"
+                                   filterValues="{dateChooser.selectedDate}"
+                                   active="{activeDateCB.selected}"
+                                   invert="{invertDateCB.selected}"/>
+    </filter:dataFilterParameters>
+  </filter:DataFilterSet>
+  <mx:HBox>
+
+    <mx:Label text="Minimum Start Date"
+              fontWeight="bold"
+              fontSize="13"/>
+    <mx:HBox>
+      <mx:CheckBox id="activeDateCB"
+                   label="Activate"
+                   selected="true"/>
+      <mx:CheckBox id="invertDateCB"
+                   label="Invert"/>
+    </mx:HBox>
+  </mx:HBox>
+  <mx:HBox>
+    <mx:DateChooser id="dateChooser"
+                    selectedDate="{new Date('05/04/2009')}"/>
+    <mx:TextArea editable="false"
+                 width="400"
+                 height="100%">
+      <mx:htmlText>
+        <![CDATA[
+      This example uses a simple custom DataFilter with a filterFunction.<br />
+      Before being compared, the object to filter can be <i>casted into your own model</i> type and you can then easily access any typed data in your custom object.<br/>
+      Here we are just filling an ArrayCollection with custom object containing only a Date property (startDate).<br/>
+      Using the custom filterFunction in the class CustomSimpleFilter, we simply compare the selectedDate to the startDate of out object.<br />
+      View source for clear explanations.
+      ]]>
+      </mx:htmlText>
+    </mx:TextArea>
+  </mx:HBox>
+  <mx:HDividedBox width="100%">
+    <mx:VBox width="100%">
+      <mx:Label text="Filtered Data"
+                fontSize="14"
+                fontWeight="bold"/>
+      <mx:List dataProvider="{_dataCollection}"
+               labelField="startDate"
+               width="100%"
+               labelFunction="customLabelFunction"/>
+    </mx:VBox>
+    <mx:VBox width="100%">
+      <mx:Label text="Unfiltered Data"
+                fontSize="14"
+                fontWeight="bold"/>
+      <mx:List dataProvider="{_dataCollection.source}"
+               labelField="startDate"
+               width="100%"
+               labelFunction="customLabelFunction"/>
+    </mx:VBox>
+  </mx:HDividedBox>
+
+
+
+</mx:VBox>
