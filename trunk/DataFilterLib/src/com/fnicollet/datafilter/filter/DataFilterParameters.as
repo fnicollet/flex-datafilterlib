@@ -30,6 +30,12 @@ package com.fnicollet.datafilter.filter {
     public static const FILTER_KEYS_CHANGED:String = "filterKeysChanged";
 
     /**
+     * Event dispatched when the filter jokers proprerty changed
+     * @default
+     */
+    public static const FILTER_JOKERS_CHANGED:String = "filterJokersChanged";
+
+    /**
      * Event dispatched when the operator proprerty changed
      * @default
      */
@@ -60,6 +66,8 @@ package com.fnicollet.datafilter.filter {
     private var _filterOperator:String = DataFilterSingleValueOperator.EQUALS_TO;
 
     private var _filterKeys:Array /* of String */ = null;
+
+    private var _filterJokers:Array /* of String */ = null;
 
     private var _filterValues:Array /* of Object */ = null;
 
@@ -141,6 +149,14 @@ package com.fnicollet.datafilter.filter {
     }
 
     /**
+     * Return an Array of values considered as wildcards.
+     * @return
+     */
+    public function get filterJokers():Array {
+      return _filterJokers;
+    }
+
+    /**
      * Return an Array of values on which the filter will operate
      * @return
      */
@@ -208,9 +224,22 @@ package com.fnicollet.datafilter.filter {
       if (value is Array) {
         _filterKeys = value;
       } else {
-        _filterKeys = [ value ];
+        _filterKeys = [value];
       }
       dispatchEvent(new Event(FILTER_KEYS_CHANGED));
+    }
+
+    /**
+     *
+     * @param value
+     */
+    public function set filterJokers(value:*):void {
+      if (value is Array) {
+        _filterJokers = value;
+      } else {
+        _filterJokers = [value];
+      }
+      dispatchEvent(new Event(FILTER_JOKERS_CHANGED));
     }
 
     /**
@@ -224,7 +253,7 @@ package com.fnicollet.datafilter.filter {
         if (_filterValues && _filterValues[0] == value) {
           return;
         }
-        _filterValues = [ value ];
+        _filterValues = [value];
       }
       dispatchEvent(new Event(FILTER_VALUES_CHANGED));
     }
