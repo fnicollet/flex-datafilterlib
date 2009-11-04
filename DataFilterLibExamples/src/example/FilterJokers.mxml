@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:mx="http://www.adobe.com/2006/mxml" width="100%" height="100%" xmlns:filter="com.fnicollet.datafilter.filter.*">
+  <mx:Script>
+    <![CDATA[
+      import com.fnicollet.datafilter.filter.DataFilterSingleValueOperator;
+      import com.fnicollet.datafilter.filter.DataFilterType;
+
+    ]]>
+  </mx:Script>
+
+  <mx:Script source="../data/ProductData.as"/>
+
+  <filter:DataFilterSet id="filterSet" data="{productData}">
+    <filter:dataFilterParameters>
+      <filter:DataFilterParameters id="tstMultiValueParameter" filterType="{DataFilterType.SINGLE_VALUE}" filterKeys="productType" filterOperator="{DataFilterSingleValueOperator.EQUALS_TO}"
+                                   filterValues="{typeChooserCB.selectedItem}" filterJokers="Any Type"/>
+    </filter:dataFilterParameters>
+  </filter:DataFilterSet>
+
+  <mx:VBox width="100%">
+    <mx:Label text="This example shows how to use the 'filterKeys' property to indicate wildcards for a filter"/>
+    <mx:Label text="Choose a Type: "/>
+    <mx:ComboBox id="typeChooserCB">
+      <mx:dataProvider>
+        <mx:Array>
+          <mx:String>Any Type</mx:String>
+          <mx:String>home</mx:String>
+          <mx:String>computers</mx:String>
+          <mx:String>auto</mx:String>
+          <mx:String>electro</mx:String>
+        </mx:Array>
+      </mx:dataProvider>
+    </mx:ComboBox>
+  </mx:VBox>
+
+
+
+
+  <mx:Label text="Filtered Data" fontSize="14" fontWeight="bold"/>
+  <mx:DataGrid rowCount="8" dataProvider="{productData}" width="100%">
+    <mx:columns>
+      <mx:DataGridColumn dataField="productName" headerText="Name"/>
+      <mx:DataGridColumn dataField="productPrice" headerText="Price"/>
+      <mx:DataGridColumn dataField="productType" headerText="Type"/>
+      <mx:DataGridColumn dataField="productCondition" headerText="Condition"/>
+      <mx:DataGridColumn dataField="productVendor" headerText="Vendor"/>
+    </mx:columns>
+  </mx:DataGrid>
+
+  <mx:Label text="Unfiltered Data" fontSize="14" fontWeight="bold"/>
+  <mx:DataGrid rowCount="5" dataProvider="{productData.source}" width="100%">
+    <mx:columns>
+      <mx:DataGridColumn dataField="productName" headerText="Name"/>
+      <mx:DataGridColumn dataField="productPrice" headerText="Price"/>
+      <mx:DataGridColumn dataField="productType" headerText="Type"/>
+      <mx:DataGridColumn dataField="productCondition" headerText="Condition"/>
+      <mx:DataGridColumn dataField="productVendor" headerText="Vendor"/>
+    </mx:columns>
+  </mx:DataGrid>
+</mx:VBox>

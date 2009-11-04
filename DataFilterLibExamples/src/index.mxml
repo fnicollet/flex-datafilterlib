@@ -34,6 +34,7 @@
     <example:FilterMultipleViews label="Filter Multiple Views"/>
     <example:MultipleFilters label="Multiple Filters"/>
     <example:CustomDataFilter label="Custom Filter"/>
+    <example:FilterJokers label="Using Jokers"/>
   </mx:TabNavigator>
 
 
