@@ -4,7 +4,7 @@ package com.fnicollet.datafilter.filter {
   import flash.events.Event;
   import flash.events.EventDispatcher;
 
-  [Event(name="refreshDataProvider",type="flash.events.Event")]
+  [Event(name="refreshDataProvider", type="flash.events.Event")]
   /**
    * Abstract class on which all filters are based.
    * Gives a basic implementation of IDataFilter and handles DataFilterParameters changes (refresh).

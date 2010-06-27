@@ -21,6 +21,10 @@ package com.fnicollet.datafilter.filter {
      */
     public function DataFilterInterval(parameters:DataFilterParameters) {
       super(parameters);
+      if (_parameters && _parameters.filterValues && _parameters.filterValues.length > 1) {
+        _min = Math.min(_parameters.filterValues[0], _parameters.filterValues[1]);
+        _max = Math.max(_parameters.filterValues[0], _parameters.filterValues[1]);
+      }
     }
 
     /**
