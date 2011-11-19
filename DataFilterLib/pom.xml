@@ -21,6 +21,9 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <flex-mojos.version>3.7.1</flex-mojos.version>
     <project.build.sourceEncoding>
     UTF-8</project.build.sourceEncoding>
+    <flex-debug>false</flex-debug>
+	<flex-optimize>true</flex-optimize>
+	<flex-verbose-stacktraces>false</flex-verbose-stacktraces>
   </properties>
   <dependencies>
     <!-- all the flex4 sdk : did not use the flex-framework pom to be able 
