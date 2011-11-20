@@ -248,11 +248,11 @@
   </build>
   <scm>
     <connection>
-    scm:svn:http://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib/</connection>
+    scm:svn:http://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0.SNAPSHOT</connection>
     <developerConnection>
-    scm:svn:https://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib/</developerConnection>
+    scm:svn:https://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0.SNAPSHOT</developerConnection>
     <url>
-    http://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib/</url>
+    http://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0.SNAPSHOT</url>
   </scm>
   <distributionManagement>
     <repository>
