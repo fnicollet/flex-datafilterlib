@@ -8,7 +8,7 @@
   </parent>
   <groupId>com.fnicollet</groupId>
   <artifactId>datafilter</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>swc</packaging>
   <name>DataFilterLib</name>
   <description>DataFilterLib, provides advanced MXML filtering for
@@ -249,11 +249,11 @@
   
   <scm>
     <connection>
-    scm:svn:http://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib</connection>
+    scm:svn:http://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0</connection>
     <developerConnection>
-    scm:svn:https://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib</developerConnection>
+    scm:svn:https://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0</developerConnection>
     <url>
-    http://flex-datafilterlib.googlecode.com/svn/trunk/DataFilterLib</url>
+    http://flex-datafilterlib.googlecode.com/svn/tags/datafilter-1.0</url>
   </scm>
   
   <distributionManagement>
