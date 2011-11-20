@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flexLibProperties version="1">
+<includeClasses>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterSingleValueOperator"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterIntervalOperator"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterSingleValue"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterFactory"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterType"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterInterval"/>
+<classEntry path="com.fnicollet.datafilter.filter.IDataFilter"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterParameters"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterBase"/>
+<classEntry path="com.fnicollet.datafilter.filter.DataFilterSet"/>
+</includeClasses>
+<includeResources/>
+<namespaceManifests/>
+</flexLibProperties>
