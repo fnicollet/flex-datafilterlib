@@ -69,7 +69,7 @@
 
       </mx:HBox>
     </mx:VBox>
-    <mx:VBox width="100%" borderStyle="solid" borderSides="left" paddingLeft="5">
+    <mx:VBox width="100%" borderStyle="solid" paddingLeft="5">
       <mx:Text text="{_filterByRangeText}" fontWeight="bold" fontSize="13" selectable="false"/>
       <mx:HBox>
         <mx:CheckBox id="activeListCB" label="Activate" selected="false"/>
