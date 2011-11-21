@@ -18,9 +18,8 @@
   <properties>
     <flex.sdk.version>4.5.1.21328</flex.sdk.version>
     <player.version>10.2</player.version>
-    <flex-mojos.version>3.7.1</flex-mojos.version>
-    <project.build.sourceEncoding>
-    UTF-8</project.build.sourceEncoding>
+    <flex-mojos.version>4.0-RC2</flex-mojos.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <flex-debug>false</flex-debug>
 	<flex-optimize>true</flex-optimize>
 	<flex-verbose-stacktraces>false</flex-verbose-stacktraces>
@@ -285,6 +284,42 @@
         </configuration>
       </plugin>
     </plugins>
+    <pluginManagement>
+    	<plugins>
+    		<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+    		<plugin>
+    			<groupId>org.eclipse.m2e</groupId>
+    			<artifactId>lifecycle-mapping</artifactId>
+    			<version>1.0.0</version>
+    			<configuration>
+    				<lifecycleMappingMetadata>
+    					<pluginExecutions>
+    						<pluginExecution>
+    							<pluginExecutionFilter>
+    								<groupId>
+    									org.sonatype.flexmojos
+    								</groupId>
+    								<artifactId>
+    									flexmojos-maven-plugin
+    								</artifactId>
+    								<versionRange>
+    									[4.0-RC2,)
+    								</versionRange>
+    								<goals>
+    									<goal>compile-swc</goal>
+    									<goal>test-compile</goal>
+    								</goals>
+    							</pluginExecutionFilter>
+    							<action>
+    								<ignore></ignore>
+    							</action>
+    						</pluginExecution>
+    					</pluginExecutions>
+    				</lifecycleMappingMetadata>
+    			</configuration>
+    		</plugin>
+    	</plugins>
+    </pluginManagement>
   </build>
   
   <profiles>
